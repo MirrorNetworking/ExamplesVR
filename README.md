@@ -1,5 +1,5 @@
 # ExamplesVR
-A selection of VR Examples for Unity and Mirror
+A selection of VR Examples for Unity and Mirror.  
 (Please note, this repo is currently a work in progress)
 
 # Setup
@@ -11,13 +11,16 @@ A selection of VR Examples for Unity and Mirror
 6: Open the scene, MirrorExamplesVR/Scenes/SceneExamplesVR  
 ![MirrorExamplesVR1](https://github.com/MirrorNetworking/ExamplesVR/assets/57072365/4b567f57-0105-47d5-8d12-a80df94b13a4)  
 Edit your Unitys window layout if needed.  
-7: Play test, press play in editor, use WASD for movemeent and mouse for UI selection, click "Auto Start", this checks for broadcasting servers on LAN, if there is none, it starts itself as a Host.  Interaction is currently limited without headset, now you can use ParrelSync to test locally that everything works, a secondary Editor or build clicking Auto Start should automaticlly join the first games server.  
-8: Build to device(s), you can use a mixture of builds, or editors if you are limited on VR hardware. You should be able to see VR players moving around.  
+7: Play test, press play in editor, use WASD for movement and mouse for UI selection, click "Auto Start", this checks for broadcasting servers on LAN, if there is none, it starts itself as a Host.  
+Interaction is currently limited without headset, you can use ParrelSync to test locally, a secondary Editor or build, clicking Auto Start should automaticlly join the first games server as long as all devices are unblocked and on the same Network.  
+(For joining across the internet, use the manual connection address box, relays or dedicated server)  
+8: Build to device(s), you can use a mixture of builds or editors if you are limited on VR hardware.
+You should be able to see VR players moving around.  
 ![2023-06-19 at 10 12 16 - VR2b](https://github.com/MirrorNetworking/ExamplesVR/assets/57072365/37c94b4a-1608-4624-9f8e-2b4029213711)  
 In the above gif, we have a Quest 2 broadcasted to screen on the Left (Player 2), and Unity Editor (player 1) on the right which is viewing the VR player.
 
 # Notes
-1: Quest 2 Mac software has fewer features than Windows as of typing, you cannot Link headset to Editor for direct movement, a build is requireed.  
+1: Quest 2 Mac software has fewer features than Windows as of typing, you cannot Link headset to Editor for direct movement, a build is required.  
 2: FIREWALLS - Take into account any anti virus/firewall blocking, along with additional settings for your particular platform (broadcast address iOS, Network Discovery sharing settings to on in Windows etc).
 
 # To-do
