@@ -23,8 +23,8 @@ public class VRPlayerRig : MonoBehaviour
         }
     }
 
-//#if UNITY_EDITOR || UNITY_STANDALONE
-    // for testing on PC/Editor, if you cannot use headset directly in Unity Editor  (W A S D)
+    // Simplee movement for testing on PC/Editor/Controller joystick
+    // helps if you cannot use headset directly in Unity Editor  (W A S D)
     private void FixedUpdate()
     {
         HandleMovement();
@@ -38,6 +38,5 @@ public class VRPlayerRig : MonoBehaviour
         transform.Rotate(0, moveX, 0);
         transform.Translate(0, 0, moveZ);
     }
-//#endif
 
 }
