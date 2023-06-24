@@ -21,9 +21,9 @@ In the above gif, we have a Quest 2 broadcasted to screen on the Left (Player 2)
 
 # Notes
 1: Quest 2 Mac software has fewer features than Windows as of typing, you cannot Link headset to Editor for direct movement, a build is required.  
-2: FIREWALLS - Take into account any anti virus/firewall blocking, along with additional settings for your particular platform (broadcast address iOS, Network Discovery sharing settings to on in Windows etc).
+2: FIREWALLS - Take into account any anti virus/firewall blocking, along with additional settings for your particular platform (broadcast address iOS, Network Discovery sharing settings to on in Windows etc).  
+3: Default XR controller trigger when held down, rapidly closes and opens Quest 2 built-in keyboard on TMP inputfields.  (its a pain, but not something we'l currently sort in this network-focused project)
 
 # To-do
 1: Everyone currently spawns at 0,0,0 position and rotation.  
-(investigate if force moving them messes with guardian/calibrations?)  
-2: Inputfields in Unity VR do not currently automatically bring up keyboards.
+(investigate if force moving them messes with guardian/calibrations?)
