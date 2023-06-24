@@ -23,14 +23,14 @@ public class VRPlayerRig : MonoBehaviour
         }
     }
 
-    // Simplee movement for testing on PC/Editor/Controller joystick
+    // Simple movement for testing on PC/Editor/Controller joystick
     // helps if you cannot use headset directly in Unity Editor  (W A S D)
     private void FixedUpdate()
     {
         HandleMovement();
     }
 
-    void HandleMovement()
+    private void HandleMovement()
     {
         float moveX = Input.GetAxis("Horizontal") * Time.deltaTime * 100.0f;
         float moveZ = Input.GetAxis("Vertical") * Time.deltaTime * 4f;

@@ -4,6 +4,7 @@ using UnityEngine;
 using Mirror;
 using UnityEngine.UI;
 using Mirror.Discovery;
+using TMPro;
 
 public class VRCanvasHUD : MonoBehaviour
 {
@@ -16,9 +17,9 @@ public class VRCanvasHUD : MonoBehaviour
     public GameObject PanelStart, PanelStop;
     public Button buttonHost, buttonServer, buttonClient, buttonStop, buttonAuto;
     public Text infoText;
-    // inputfield interaction do not auto bring up a keyboard on headset builds (to-do)
-    public InputField inputFieldAddress;
-    
+    // legacy inputfield interaction does not auto bring up a keyboard on headset builds, use tmp.
+    public TMP_InputField inputFieldAddress;
+
     private void Start()
     {
         //Make sure to attach these Buttons in the Inspector
@@ -115,7 +116,7 @@ public class VRCanvasHUD : MonoBehaviour
             NetworkManager.singleton.StopServer();
         }
         networkDiscovery.StopDiscovery();
-        // we ned to call setup canvas a second time in this function for it to update the abovee changes
+        // we need to call setup canvas a second time in this function for it to update the abovee changes
         SetupCanvas();
     }
 
