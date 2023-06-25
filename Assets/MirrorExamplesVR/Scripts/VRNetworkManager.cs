@@ -40,6 +40,8 @@ public class VRNetworkManager : NetworkManager
     public override void Start()
     {
         base.Start();
+        if (vrCanvasHUD == null)
+        { vrCanvasHUD = GameObject.FindObjectOfType<VRCanvasHUD>(); }
     }
 
     /// <summary>
