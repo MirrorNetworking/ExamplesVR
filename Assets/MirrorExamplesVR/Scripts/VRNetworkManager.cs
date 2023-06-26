@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Mirror;
+using System.Linq;
 
 /*
 	Documentation: https://mirror-networking.gitbook.io/docs/components/network-manager
@@ -15,6 +16,7 @@ public class VRNetworkManager : NetworkManager
     public static new VRNetworkManager singleton { get; private set; }
 
     public VRCanvasHUD vrCanvasHUD;
+    private NetworkIdentity[] copyOfOwnedObjects;
 
     /// <summary>
     /// Runs on both Server and Client
@@ -40,6 +42,8 @@ public class VRNetworkManager : NetworkManager
     public override void Start()
     {
         base.Start();
+        if (vrCanvasHUD == null)
+        { vrCanvasHUD = GameObject.FindObjectOfType<VRCanvasHUD>(); }
     }
 
     /// <summary>
@@ -181,6 +185,17 @@ public class VRNetworkManager : NetworkManager
     /// <param name="conn">Connection from client.</param>
     public override void OnServerDisconnect(NetworkConnectionToClient conn)
     {
+        // this code is to reset any objects belonging to disconnected clients
+        // make a copy because the original collection will change in the loop
+        copyOfOwnedObjects = conn.owned.ToArray();
+        // Loop the copy, skipping the player object.
+        // RemoveClientAuthority on everything else
+        foreach (NetworkIdentity identity in copyOfOwnedObjects)
+        {
+            if (identity != conn.identity)
+                identity.RemoveClientAuthority();
+        }
+
         base.OnServerDisconnect(conn);
         //UnityEngine.Debug.Log("OnServerDisconnect");
         vrCanvasHUD.SetupInfoText("A client disconnected.");
