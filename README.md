@@ -7,8 +7,9 @@ A selection of VR Examples for Unity and Mirror.
 2: Download VR software - this guide uses Quest 2, https://www.meta.com/gb/quest/setup/  
 3: Connect Headset to PC, play with your headset and controllers, get familiar with it.  
 4: Browse the Docs and Guides whilst having a Biscuit and Tea break, https://developer.oculus.com/documentation/unity/unity-env-device-setup/  
-5: Import this ExampleVR project into a fresh unity Project, packages and plugins should all be included.  
-6: Open the scene, MirrorExamplesVR/Scenes/SceneExamplesVR  
+5: Open or Import this ExampleVR project into Unity, packages and plugins should all be included.  
+6: Open one of the scenes such as, MirrorExamplesVR/Scenes/SceneVR-Basic/SceneVR-Basic  
+(each scene will have a ReadMe to explain any setup)
 ![MirrorExamplesVR1](https://github.com/MirrorNetworking/ExamplesVR/assets/57072365/4b567f57-0105-47d5-8d12-a80df94b13a4)  
 Edit your Unitys window layout if needed.  
 7: Play test, press play in editor, use WASD for movement and mouse for UI selection, click "Auto Start", this checks for broadcasting servers on LAN, if there is none, it starts itself as a Host.  
@@ -26,4 +27,5 @@ In the above gif, we have a Quest 2 broadcasted to screen on the Left (Player 2)
 
 # To-do
 1: Everyone currently spawns at 0,0,0 position and rotation.  
-(investigate if force moving them messes with guardian/calibrations?)
+(investigate if force moving them messes with guardian/calibrations?)  
+2: Add further examples that focus on VR Networking with Mirror.
