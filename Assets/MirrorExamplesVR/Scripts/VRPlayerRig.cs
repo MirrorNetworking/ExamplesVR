@@ -1,10 +1,18 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class VRPlayerRig : MonoBehaviour
 {
     public Transform rHandTransform;
     public Transform lHandTransform;
     public Transform headTransform;
+
+    public Transform canvasUIPosition;
+
+    public GameObject damageTriggerR;
+    public GameObject damageTriggerL;
 
     public VRNetworkPlayerScript localVRNetworkPlayerScript;
 
@@ -28,6 +36,7 @@ public class VRPlayerRig : MonoBehaviour
     private void FixedUpdate()
     {
         HandleMovement();
+        //HandleInput();
     }
 
     private void HandleMovement()
@@ -39,4 +48,46 @@ public class VRPlayerRig : MonoBehaviour
         transform.Translate(0, 0, moveZ);
     }
 
+    private void HandleInput()
+    {
+        //bool pressed;
+        //rightHand.inputDevice.IsPressed(button, out pressed);
+
+        //if (pressed)
+        //{
+        //    Debug.Log("Hello - " + button);
+        //}
+
+            // take input from focused window only
+            if (!Application.isFocused)
+                return;
+
+            // input for local player
+            if (localVRNetworkPlayerScript && localVRNetworkPlayerScript.isLocalPlayer)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                localVRNetworkPlayerScript.vrNetworkHealth.InputDamageOn();
+                }
+                //else if (Input.GetKeyUp(KeyCode.Space))
+                //{
+                //localVRNetworkPlayerScript.vrNetworkHealth.InputDamageOff();
+                //}
+            }
+    }
+
+    //public XRController rightHand;
+    public InputActionReference combatActivatedButton;
+
+    private void OnEnable()
+    {
+        combatActivatedButton.action.performed += InputActionCombatActivated;
+    }
+
+    private void InputActionCombatActivated(InputAction.CallbackContext context)
+    {
+       // Debug.Log("InputActionCombatActivated: " + context);
+        localVRNetworkPlayerScript.vrNetworkHealth.InputDamageOn();
+    }
+   
 }

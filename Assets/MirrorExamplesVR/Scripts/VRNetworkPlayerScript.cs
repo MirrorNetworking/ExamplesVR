@@ -1,5 +1,6 @@
 using UnityEngine;
 using Mirror;
+using System.Collections.Generic;
 
 public class VRNetworkPlayerScript : NetworkBehaviour
 {
@@ -8,6 +9,7 @@ public class VRNetworkPlayerScript : NetworkBehaviour
     public Transform headTransform;
 
     public VRPlayerRig vrPlayerRig;
+    public VRNetworkHealth vrNetworkHealth;
 
     public override void OnStartLocalPlayer()
     {
@@ -19,5 +21,18 @@ public class VRNetworkPlayerScript : NetworkBehaviour
         rHandTransform.gameObject.SetActive(false);
         lHandTransform.gameObject.SetActive(false);
         headTransform.gameObject.SetActive(false);
+    }
+
+
+    public readonly static List<VRNetworkPlayerScript> playersList = new List<VRNetworkPlayerScript>();
+
+    public override void OnStartServer()
+    {
+        playersList.Add(this);
+    }
+
+    public override void OnStopServer()
+    {
+        playersList.Remove(this);
     }
 }
