@@ -12,6 +12,16 @@ public class VRNetworkEnemy : NetworkBehaviour
     private int enemyStatus = 0; // 1 = attack
     private int attackTriggerAmount = 0;
     public Transform pivotForAttack;
+    private Transform mainCameraTransform;
+    private Vector3 targetVector;
+
+    public override void OnStartServer()
+    {
+        if(mainCameraTransform == null)
+        {
+            mainCameraTransform = Camera.main.transform;
+        }
+    }
 
     // LateUpdate so that all camera updates are finished.
     [ServerCallback]
@@ -20,10 +30,13 @@ public class VRNetworkEnemy : NetworkBehaviour
         if (enemyStatus == 1)
         {
             pivotForAttack.RotateAround(pivotForAttack.position, Vector3.up, 333 * Time.deltaTime);
+           
         }
         else if (targetTransform)
         {
-            transform.forward = targetTransform.forward;
+            targetVector = this.transform.position - targetTransform.position;
+            targetVector.y = 0;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetVector), Time.deltaTime * 5);
         }
         else
         {
