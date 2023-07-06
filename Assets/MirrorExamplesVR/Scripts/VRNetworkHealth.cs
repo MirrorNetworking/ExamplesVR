@@ -30,8 +30,8 @@ public class VRNetworkHealth : NetworkBehaviour
         canvasUI.SetParent(vrNetworkPlayerScript.vrPlayerRig.canvasUIPosition);
         canvasUI.localScale = new Vector3(0.15f, 0.15f, 0.15f);
         canvasUI.position = vrNetworkPlayerScript.vrPlayerRig.canvasUIPosition.position;
-        vrNetworkPlayerScript.vrPlayerRig.damageTriggerL.GetComponent<VRHealthChild>().vrNetworkHealth = this;
-        vrNetworkPlayerScript.vrPlayerRig.damageTriggerR.GetComponent<VRHealthChild>().vrNetworkHealth = this;
+        vrNetworkPlayerScript.vrPlayerRig.damageTriggerL.SetActive(false);
+        vrNetworkPlayerScript.vrPlayerRig.damageTriggerR.SetActive(false);
     }
 
     [ServerCallback]
@@ -91,15 +91,15 @@ public class VRNetworkHealth : NetworkBehaviour
 
     public void InputDamageOn()
     {
-        vrNetworkPlayerScript.vrPlayerRig.damageTriggerL.SetActive(true);
-        vrNetworkPlayerScript.vrPlayerRig.damageTriggerR.SetActive(true);
+        //vrNetworkPlayerScript.vrPlayerRig.damageTriggerL.SetActive(true);
+        //vrNetworkPlayerScript.vrPlayerRig.damageTriggerR.SetActive(true);
         CmdDamageTrigger(1);
     }
 
     public void InputDamageOff()
     {
-        vrNetworkPlayerScript.vrPlayerRig.damageTriggerL.SetActive(false);
-        vrNetworkPlayerScript.vrPlayerRig.damageTriggerR.SetActive(false);
+        //vrNetworkPlayerScript.vrPlayerRig.damageTriggerL.SetActive(false);
+        //vrNetworkPlayerScript.vrPlayerRig.damageTriggerR.SetActive(false);
         CmdDamageTrigger(0);
     }
 

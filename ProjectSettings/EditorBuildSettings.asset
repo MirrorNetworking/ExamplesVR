@@ -5,12 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/MirrorExamplesVR/Scenes/SceneVR-Basic/SceneVR-Basic.unity
     guid: b4f16b2ff2d7a47a4ab95225b188b936
-  - enabled: 1
+  - enabled: 0
     path: Assets/MirrorExamplesVR/Scenes/SceneVR-UnityDemo/SceneVR-UnityDemo.unity
     guid: e9f9abc5a3a744cb8b39c79bb2a1feca
+  - enabled: 1
+    path: Assets/MirrorExamplesVR/Scenes/SceneVR-Common/SceneVR-Common.unity
+    guid: e69c5aeb17b5c48dc986ef25a3f9d6b0
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 888d48b45cc3246d29397bcf04d21676, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: fdfd9a7579b1340efac4272be2213881, type: 2}

@@ -7,9 +7,13 @@ public class VRNetworkPlayerScript : NetworkBehaviour
     public Transform rHandTransform;
     public Transform lHandTransform;
     public Transform headTransform;
+    public GameObject headModel;
+    public GameObject rHandModel;
+    public GameObject lHandModel;
 
     public VRPlayerRig vrPlayerRig;
     public VRNetworkHealth vrNetworkHealth;
+    
 
     public override void OnStartLocalPlayer()
     {
@@ -18,9 +22,12 @@ public class VRNetworkPlayerScript : NetworkBehaviour
         vrPlayerRig.localVRNetworkPlayerScript = this;
 
         // we dont need to see our network representation of hands, or our own headset, it also covers camera without using layers or some repositioning
-        rHandTransform.gameObject.SetActive(false);
-        lHandTransform.gameObject.SetActive(false);
-        headTransform.gameObject.SetActive(false);
+        //rHandTransform.gameObject.SetActive(false);
+        //lHandTransform.gameObject.SetActive(false);
+ 
+        headModel.SetActive(false);
+        rHandModel.SetActive(false);
+        lHandModel.SetActive(false);
     }
 
 
