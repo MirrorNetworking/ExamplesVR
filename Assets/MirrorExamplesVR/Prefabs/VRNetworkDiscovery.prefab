@@ -80,7 +80,7 @@ MonoBehaviour:
   autoStartServerBuild: 1
   autoConnectClientBuild: 0
   sendRate: 30
-  offlineScene: 
+  offlineScene: Assets/MirrorExamplesVR/Scenes/SceneVR-Menu/SceneVR-Menu.unity
   onlineScene: 
   transport: {fileID: 1815383773422179065}
   networkAddress: localhost

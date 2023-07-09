@@ -22,15 +22,12 @@ public class VRNetworkPlayerScript : NetworkBehaviour
         vrPlayerRig.localVRNetworkPlayerScript = this;
 
         // we dont need to see our network representation of hands, or our own headset, it also covers camera without using layers or some repositioning
-        //rHandTransform.gameObject.SetActive(false);
-        //lHandTransform.gameObject.SetActive(false);
- 
         headModel.SetActive(false);
         rHandModel.SetActive(false);
         lHandModel.SetActive(false);
     }
 
-
+    // a static global list of players that can be used for a variery of features, one being enemies
     public readonly static List<VRNetworkPlayerScript> playersList = new List<VRNetworkPlayerScript>();
 
     public override void OnStartServer()

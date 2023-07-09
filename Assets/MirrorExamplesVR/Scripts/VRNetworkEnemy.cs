@@ -5,12 +5,14 @@ using Mirror;
 
 public class VRNetworkEnemy : NetworkBehaviour
 {
+    // bit of enemy ai, acts as a punching bag, faces closest or player who hit it last, does spin attack after X amount of attacks
     public Transform targetTransform;
     private float targetDistance = Mathf.Infinity;
     private Vector3 targetDifference;
     private float squaredDirection;
     private int enemyStatus = 0; // 1 = attack
-    private int attackTriggerAmount = 0;
+    private int attackTriggerAmount = 3;
+    private int attackTriggerCounter = 0;
     public Transform pivotForAttack;
     private Transform mainCameraTransform;
     private Vector3 targetVector;
@@ -29,8 +31,8 @@ public class VRNetworkEnemy : NetworkBehaviour
     {
         if (enemyStatus == 1)
         {
-            pivotForAttack.RotateAround(pivotForAttack.position, Vector3.up, 333 * Time.deltaTime);
-           
+            // enemy aggro amount trigger, do a spin attack
+            pivotForAttack.RotateAround(pivotForAttack.position, Vector3.up, 333 * Time.deltaTime);        
         }
         else if (targetTransform)
         {
@@ -64,10 +66,10 @@ public class VRNetworkEnemy : NetworkBehaviour
 
     public void AttackEvent()
     {
-        attackTriggerAmount += 1;
-        if (attackTriggerAmount >= 3)
+        attackTriggerCounter += 1;
+        if (attackTriggerCounter >= attackTriggerAmount)
         {
-            attackTriggerAmount = 0;
+            attackTriggerCounter = 0;
             StartCoroutine(AttackCooldown(UnityEngine.Random.Range(1.0f, 3.0f)));
         }
     }

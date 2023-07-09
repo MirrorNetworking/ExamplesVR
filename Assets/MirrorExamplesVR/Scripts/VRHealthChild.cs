@@ -5,6 +5,8 @@ using Mirror;
 
 public class VRHealthChild : MonoBehaviour
 {
+    // This script is to be placed on child objects with trigger colliders
+    // Passes info back upto parent heealth script so it effects main health amount
     public VRNetworkHealth vrNetworkHealth;
 
     [ServerCallback]
@@ -13,7 +15,6 @@ public class VRHealthChild : MonoBehaviour
         //Debug.Log(name + " OnTriggerEnter: " + _collider.name);
         if (vrNetworkHealth)
         {
-            //Debug.Log(name + " OnTriggerEnter vrNetworkHealth.HitEvent: " + _collider.name);
             vrNetworkHealth.HitEvent(_collider);
         }
     }
