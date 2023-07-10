@@ -42,6 +42,9 @@ public class VRCanvasHUD : MonoBehaviour
         if (networkDiscovery == null)
         { networkDiscovery = GameObject.FindObjectOfType<VRNetworkDiscovery>(); }
 
+        if (networkDiscovery == null)
+        { networkDiscovery = GameObject.FindObjectOfType<VRNetworkDiscovery>(); }
+
         // skips waiting for users to press ui button
         if (alwaysAutoStart)
         {
