@@ -12,6 +12,7 @@ public class VRCanvasHUD : MonoBehaviour
     public bool alwaysAutoStart = false;
     public VRNetworkDiscovery networkDiscovery;
     readonly Dictionary<long, ServerResponse> discoveredServers = new Dictionary<long, ServerResponse>();
+    private TouchScreenKeyboard keyboard;
 
     // UI
     public GameObject PanelStart, PanelStop;
@@ -172,6 +173,26 @@ public class VRCanvasHUD : MonoBehaviour
     public void OnValueChangedAddress()
     {
         NetworkManager.singleton.networkAddress = inputFieldAddress.text;
+    }
+
+    public void ButtonKeyboard(int _status)
+    {
+        if (TouchScreenKeyboard.isSupported)
+        {
+            keyboard = TouchScreenKeyboard.Open(inputFieldAddress.text, TouchScreenKeyboardType.Default, false, false, false, false, "", 15);
+            // Open(string text, TouchScreenKeyboardType keyboardType = TouchScreenKeyboardType.Default, bool autocorrection = true, bool multiline = false, bool secure = false, bool alert = false, string textPlaceholder = "", int characterLimit = 0);
+        }
+    }
+
+    private void Update()
+    {
+        if (keyboard.active)
+        {
+            if (keyboard.text != "")
+            {
+                inputFieldAddress.text = keyboard.text;
+            }
+        }
     }
 }
 
