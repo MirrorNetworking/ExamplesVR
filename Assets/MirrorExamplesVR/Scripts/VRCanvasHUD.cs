@@ -5,6 +5,7 @@ using Mirror;
 using UnityEngine.UI;
 using Mirror.Discovery;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class VRCanvasHUD : MonoBehaviour
 {
@@ -12,13 +13,15 @@ public class VRCanvasHUD : MonoBehaviour
     public bool alwaysAutoStart = false;
     public VRNetworkDiscovery networkDiscovery;
     readonly Dictionary<long, ServerResponse> discoveredServers = new Dictionary<long, ServerResponse>();
+    private TouchScreenKeyboard keyboard;
+    private int keyboardStatus = 0;
 
     // UI
     public GameObject PanelStart, PanelStop;
     public Button buttonHost, buttonServer, buttonClient, buttonStop, buttonAuto;
     public Text infoText;
     // legacy inputfield interaction does not auto bring up a keyboard on headset builds, use tmp.
-    public TMP_InputField inputFieldAddress;
+    public TMP_InputField inputFieldAddress, inputFieldPlayerName;
 
     private void Start()
     {
@@ -34,6 +37,10 @@ public class VRCanvasHUD : MonoBehaviour
 
         //Adds a listener to the input field and invokes a method when the value changes.
         inputFieldAddress.onValueChanged.AddListener(delegate { OnValueChangedAddress(); });
+        inputFieldPlayerName.onValueChanged.AddListener(delegate { OnValueChangedName(); });
+
+        if (networkDiscovery == null)
+        { networkDiscovery = GameObject.FindObjectOfType<VRNetworkDiscovery>(); }
 
         if (networkDiscovery == null)
         { networkDiscovery = GameObject.FindObjectOfType<VRNetworkDiscovery>(); }
@@ -57,6 +64,7 @@ public class VRCanvasHUD : MonoBehaviour
             infoText.text = "No Servers found, starting as Host.";
             yield return new WaitForSeconds(1.0f);
             discoveredServers.Clear();
+           // NetworkManager.singleton.onlineScene = SceneManager.GetActiveScene().name;
             NetworkManager.singleton.StartHost();
             networkDiscovery.AdvertiseServer();
         }
@@ -79,6 +87,7 @@ public class VRCanvasHUD : MonoBehaviour
     {
         SetupInfoText("Starting as host");
         discoveredServers.Clear();
+        //NetworkManager.singleton.onlineScene = SceneManager.GetActiveScene().name;
         NetworkManager.singleton.StartHost();
         networkDiscovery.AdvertiseServer();
 
@@ -88,6 +97,7 @@ public class VRCanvasHUD : MonoBehaviour
     {
         SetupInfoText("Starting as server.");
         discoveredServers.Clear();
+       // NetworkManager.singleton.onlineScene = SceneManager.GetActiveScene().name;
         NetworkManager.singleton.StartServer();
         networkDiscovery.AdvertiseServer();
 
@@ -172,6 +182,43 @@ public class VRCanvasHUD : MonoBehaviour
     public void OnValueChangedAddress()
     {
         NetworkManager.singleton.networkAddress = inputFieldAddress.text;
+    }
+
+    // touchscreen keyboard can be weird, so we have an option to open it manually
+    public void ButtonKeyboard(int _status)
+    {
+        if (TouchScreenKeyboard.isSupported)
+        {
+            keyboardStatus = _status;
+            keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false, "", 15);
+            // Open(string text, TouchScreenKeyboardType keyboardType = TouchScreenKeyboardType.Default, bool autocorrection = true, bool multiline = false, bool secure = false, bool alert = false, string textPlaceholder = "", int characterLimit = 0);
+        }
+        else
+        {
+            Debug.Log("Touchscreen keyboard not supported.");
+        }
+    }
+
+    private void Update()
+    {
+        if (TouchScreenKeyboard.isSupported && keyboard.active && keyboard.text != "")
+        {
+            if (keyboardStatus == 1)
+            {
+                inputFieldAddress.text = keyboard.text;
+            }
+            else if (keyboardStatus == 2)
+            {
+                inputFieldPlayerName.text = keyboard.text;
+                VRStaticVariables.playerName = inputFieldPlayerName.text;
+            }
+        }
+    }
+
+    // Invoked when the value of the text field changes.
+    public void OnValueChangedName()
+    {
+        VRStaticVariables.playerName = inputFieldPlayerName.text;
     }
 }
 

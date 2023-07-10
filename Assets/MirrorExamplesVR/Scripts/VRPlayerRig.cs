@@ -1,10 +1,18 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class VRPlayerRig : MonoBehaviour
 {
     public Transform rHandTransform;
     public Transform lHandTransform;
     public Transform headTransform;
+
+    public Transform canvasUIPosition;
+
+    public GameObject damageTriggerR;
+    public GameObject damageTriggerL;
 
     public VRNetworkPlayerScript localVRNetworkPlayerScript;
 
@@ -38,5 +46,5 @@ public class VRPlayerRig : MonoBehaviour
         transform.Rotate(0, moveX, 0);
         transform.Translate(0, 0, moveZ);
     }
-
+   
 }
