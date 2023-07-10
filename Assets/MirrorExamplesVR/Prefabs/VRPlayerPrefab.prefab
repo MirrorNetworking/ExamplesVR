@@ -256,6 +256,8 @@ MonoBehaviour:
   lHandModel: {fileID: 465529162033633478}
   vrPlayerRig: {fileID: 0}
   vrNetworkHealth: {fileID: 5292069082588018087}
+  playerName: 
+  textPlayerName: {fileID: 3069002722878179239}
 --- !u!114 &1741081720
 MonoBehaviour:
   m_ObjectHideFlags: 0

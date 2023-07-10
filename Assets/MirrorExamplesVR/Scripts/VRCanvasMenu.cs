@@ -1,13 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 public class VRCanvasMenu : MonoBehaviour
 {
-    public Button buttonHost, buttonServer, buttonClient, buttonStop, buttonAuto;
     private string mapName;
 
     public void ButtonMap(int _map)
