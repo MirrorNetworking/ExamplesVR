@@ -698,6 +698,9 @@ MonoBehaviour:
   rHandTransform: {fileID: 2147186457}
   lHandTransform: {fileID: 1570328952}
   headTransform: {fileID: 888668571}
+  canvasUIPosition: {fileID: 0}
+  damageTriggerR: {fileID: 0}
+  damageTriggerL: {fileID: 0}
   localVRNetworkPlayerScript: {fileID: 0}
 --- !u!1 &1313124812
 GameObject:
@@ -1128,7 +1131,7 @@ MonoBehaviour:
   m_TimeToAutoDeselect: 3
   m_EnableUIInteraction: 1
   m_AllowAnchorControl: 1
-  m_UseForceGrab: 1
+  m_UseForceGrab: 0
   m_RotateSpeed: 180
   m_TranslateSpeed: 1
   m_AnchorRotateReferenceFrame: {fileID: 0}
@@ -1508,7 +1511,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!23 &2135667051
 MeshRenderer:
@@ -1983,7 +1986,7 @@ MonoBehaviour:
   m_TimeToAutoDeselect: 3
   m_EnableUIInteraction: 1
   m_AllowAnchorControl: 1
-  m_UseForceGrab: 1
+  m_UseForceGrab: 0
   m_RotateSpeed: 180
   m_TranslateSpeed: 1
   m_AnchorRotateReferenceFrame: {fileID: 0}
