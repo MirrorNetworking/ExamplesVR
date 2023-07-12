@@ -497,6 +497,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2054503386920423797, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205024581373840549, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091241995346441960, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5341854975434961899, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
       propertyPath: m_LocalScale.x
       value: 20
@@ -508,6 +520,18 @@ PrefabInstance:
     - target: {fileID: 5341854975434961899, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
       propertyPath: m_LocalPosition.z
       value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219902843990209629, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895887226161143353, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7313236516763210447, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
@@ -533,7 +557,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &235184211
 BoxCollider:
@@ -3222,7 +3246,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1579013953
 Transform:
@@ -3526,6 +3550,9 @@ MonoBehaviour:
   rHandTransform: {fileID: 1731298974}
   lHandTransform: {fileID: 1731298975}
   headTransform: {fileID: 1731298972}
+  canvasUIPosition: {fileID: 0}
+  damageTriggerR: {fileID: 0}
+  damageTriggerL: {fileID: 0}
   localVRNetworkPlayerScript: {fileID: 0}
 --- !u!1 &1740969850
 GameObject:
@@ -9246,7 +9273,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &1084091470002776101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10864,7 +10891,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!23 &4581292472285887092
 MeshRenderer:
@@ -11240,7 +11267,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!33 &5178052649452904310
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11466,7 +11493,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &6559198439968760668
 MonoBehaviour:
   m_ObjectHideFlags: 0
