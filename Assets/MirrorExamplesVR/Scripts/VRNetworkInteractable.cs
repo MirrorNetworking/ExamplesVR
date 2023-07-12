@@ -31,13 +31,18 @@ public class VRNetworkInteractable : NetworkBehaviour
         }
     }
 
+
     public void EventDrop()
     {
+        // technically dont need to pass auth when dropping, only remove auth when another player grabs, or current grabber disconnects
+        // doing it this way stops jitter when passing auth of moving objects (due to ping difference of positions)
+        /*
         if (isOwned == true)
         {
-            ResetInteractableVelocity();
-            CmdDrop();
+            //ResetInteractableVelocity();
+            //CmdDrop(); //rb.velocity,rb.angularVelocity
         }
+        */
     }
 
     [Command(requiresAuthority = false)]
@@ -54,20 +59,25 @@ public class VRNetworkInteractable : NetworkBehaviour
         }
     }
 
+    /*
     [Command(requiresAuthority = false)]
-    public void CmdDrop(NetworkConnectionToClient sender = null)
+    public void CmdDrop(NetworkConnectionToClient sender = null) //Vector3 _velocity, Vector3 _angualarVelocity,
     {
         //Debug.Log("CmdDrop owner removed from: " + sender.identity);
 
-        ResetInteractableVelocity();
+        //ResetInteractableVelocity();
 
         if (netIdentity.connectionToClient != null)
         {
             netIdentity.RemoveClientAuthority();
         }
         netIdentity.AssignClientAuthority(NetworkServer.connections[0]);
+
+        //rb.velocity = _velocity;
+        //rb.angularVelocity = _angualarVelocity;
         //Debug.Log("CmdDrop assigned to host : " + NetworkServer.connections[0].identity);
     }
+    */
 
     private void ResetInteractableVelocity()
     {
