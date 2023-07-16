@@ -8,6 +8,7 @@ public class VRNetworkInteractable : NetworkBehaviour
 {
     private Rigidbody rb;
     //private XRGrabInteractable xRGrabInteractable;
+    public VRWeapon vrWeapon;
 
     private void Start()
     {
@@ -24,11 +25,11 @@ public class VRNetworkInteractable : NetworkBehaviour
 
     public void EventPickup()
     {
-        if (isOwned == false)
-        {
+        //if (isOwned == false)
+        //{
             ResetInteractableVelocity();
             CmdPickup();
-        }
+        //}
     }
 
 
@@ -36,19 +37,23 @@ public class VRNetworkInteractable : NetworkBehaviour
     {
         // technically dont need to pass auth when dropping, only remove auth when another player grabs, or current grabber disconnects
         // doing it this way stops jitter when passing auth of moving objects (due to ping difference of positions)
-        /*
+        ///*
         if (isOwned == true)
         {
             //ResetInteractableVelocity();
-            //CmdDrop(); //rb.velocity,rb.angularVelocity
+            if (vrWeapon)
+            {
+                CmdDrop();
+            }
+            //rb.velocity,rb.angularVelocity
         }
-        */
+        //*/
     }
 
     [Command(requiresAuthority = false)]
     public void CmdPickup(NetworkConnectionToClient sender = null)
     {
-        //Debug.Log("CmdPickup owner set to: " + sender.identity);
+        Debug.Log("Mirror CmdPickup owner set to: " + sender.identity);
 
         ResetInteractableVelocity();
 
@@ -57,27 +62,39 @@ public class VRNetworkInteractable : NetworkBehaviour
             netIdentity.RemoveClientAuthority();
             netIdentity.AssignClientAuthority(sender);
         }
+
+        if (vrWeapon)
+        {
+            vrWeapon.vrNetworkPlayerScript = sender.identity.GetComponent<VRNetworkPlayerScript>();
+            vrWeapon.vrNetworkPlayerScript.rightHandObject = this.netIdentity;
+        }
     }
 
-    /*
+    ///*
     [Command(requiresAuthority = false)]
     public void CmdDrop(NetworkConnectionToClient sender = null) //Vector3 _velocity, Vector3 _angualarVelocity,
     {
-        //Debug.Log("CmdDrop owner removed from: " + sender.identity);
+        Debug.Log("Mirror CmdDrop owner removed from: " + sender.identity);
 
         //ResetInteractableVelocity();
 
-        if (netIdentity.connectionToClient != null)
-        {
-            netIdentity.RemoveClientAuthority();
-        }
-        netIdentity.AssignClientAuthority(NetworkServer.connections[0]);
+        //if (netIdentity.connectionToClient != null)
+        //{
+        //    netIdentity.RemoveClientAuthority();
+        //}
+        //netIdentity.AssignClientAuthority(NetworkServer.connections[0]);
 
         //rb.velocity = _velocity;
         //rb.angularVelocity = _angualarVelocity;
         //Debug.Log("CmdDrop assigned to host : " + NetworkServer.connections[0].identity);
+
+        if (vrWeapon && vrWeapon.vrNetworkPlayerScript)
+        {
+            vrWeapon.vrNetworkPlayerScript.rightHandObject = null;
+           // vrWeapon.vrNetworkPlayerScript = null;
+        }
     }
-    */
+    //*/
 
     private void ResetInteractableVelocity()
     {
@@ -88,5 +105,24 @@ public class VRNetworkInteractable : NetworkBehaviour
 
         // we can use this check apply different behaviour depending on interactable type
         // if (xRGrabInteractable.movementType == XRBaseInteractable.MovementType.VelocityTracking) { }
+    }
+
+    public VRNetworkPlayerScript vrNetworkPlayerScript;
+
+    private void Update()
+    {
+        if (vrNetworkPlayerScript == null)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            EventPickup();
+            //vrNetworkPlayerScript = vrNetworkPlayerScript.GetComponent<VRNetworkPlayerScript>();
+           // vrNetworkPlayerScript.rightHandObject = this.netIdentity;
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            EventDrop();
+        }
     }
 }
