@@ -4016,7 +4016,19 @@ MonoBehaviour:
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1280621457}
+        m_TargetAssemblyTypeName: VRPlayerRig, Assembly-CSharp
+        m_MethodName: SetHandStatus
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_OnHoverEntered:
@@ -5017,6 +5029,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interactable Gun 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2418966711741288440, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
+      propertyPath: weaponAmmo
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418966711741288440, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
+      propertyPath: weaponFireCooldown
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418966711741288440, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
+      propertyPath: weaponProjectileLife
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418966711741288440, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
+      propertyPath: weaponProjectileSpeed
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 2418966711741288444, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
       propertyPath: sceneId
       value: 2055248379
@@ -5592,6 +5620,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interactable Gun 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2418966711741288440, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
+      propertyPath: weaponAmmo
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418966711741288440, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
+      propertyPath: weaponProjectile
+      value: 
+      objectReference: {fileID: 3418916343363168520, guid: dfec48066253a4fb483f7e694b7cd6c1, type: 3}
+    - target: {fileID: 2418966711741288440, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
+      propertyPath: weaponFireCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418966711741288440, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
+      propertyPath: weaponProjectileLife
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418966711741288440, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
+      propertyPath: weaponProjectileSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2418966711741288444, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
       propertyPath: sceneId
       value: 3341178683
@@ -5970,7 +6018,19 @@ MonoBehaviour:
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1280621457}
+        m_TargetAssemblyTypeName: VRPlayerRig, Assembly-CSharp
+        m_MethodName: SetHandStatus
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_OnHoverEntered:
@@ -6505,6 +6565,18 @@ PrefabInstance:
     - target: {fileID: 2418966711741288432, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
       propertyPath: m_Name
       value: Interactable Gun 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418966711741288440, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
+      propertyPath: weaponAmmo
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418966711741288440, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
+      propertyPath: weaponFireCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418966711741288440, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
+      propertyPath: weaponProjectileLife
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2418966711741288444, guid: d0792f029ff0049d68d4daede31d278c, type: 3}
       propertyPath: sceneId

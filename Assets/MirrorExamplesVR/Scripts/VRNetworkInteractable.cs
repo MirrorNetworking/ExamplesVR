@@ -28,7 +28,7 @@ public class VRNetworkInteractable : NetworkBehaviour
         //if (isOwned == false)
         //{
             ResetInteractableVelocity();
-            CmdPickup();
+            CmdPickup(VRStaticVariables.handValue);
         //}
     }
 
@@ -43,7 +43,7 @@ public class VRNetworkInteractable : NetworkBehaviour
             //ResetInteractableVelocity();
             if (vrWeapon)
             {
-                CmdDrop();
+                CmdDrop(VRStaticVariables.handValue);
             }
             //rb.velocity,rb.angularVelocity
         }
@@ -51,9 +51,9 @@ public class VRNetworkInteractable : NetworkBehaviour
     }
 
     [Command(requiresAuthority = false)]
-    public void CmdPickup(NetworkConnectionToClient sender = null)
+    public void CmdPickup(int _hand, NetworkConnectionToClient sender = null)
     {
-        Debug.Log("Mirror CmdPickup owner set to: " + sender.identity);
+        //Debug.Log("Mirror CmdPickup owner set to: " + sender.identity);
 
         ResetInteractableVelocity();
 
@@ -66,7 +66,8 @@ public class VRNetworkInteractable : NetworkBehaviour
         if (vrWeapon)
         {
             vrWeapon.vrNetworkPlayerScript = sender.identity.GetComponent<VRNetworkPlayerScript>();
-            if (VRStaticVariables.handValue == 2)
+            //vrWeapon.SetTextAmmo();
+            if (_hand == 2)
             {
                 vrWeapon.vrNetworkPlayerScript.leftHandObject = this.netIdentity;
             }
@@ -80,9 +81,9 @@ public class VRNetworkInteractable : NetworkBehaviour
 
     ///*
     [Command(requiresAuthority = false)]
-    public void CmdDrop(NetworkConnectionToClient sender = null) //Vector3 _velocity, Vector3 _angualarVelocity,
+    public void CmdDrop(int _hand, NetworkConnectionToClient sender = null) //Vector3 _velocity, Vector3 _angualarVelocity,
     {
-        Debug.Log("Mirror CmdDrop owner removed from: " + sender.identity);
+        //Debug.Log("Mirror CmdDrop owner removed from: " + sender.identity);
 
         //ResetInteractableVelocity();
 
@@ -98,8 +99,14 @@ public class VRNetworkInteractable : NetworkBehaviour
 
         if (vrWeapon && vrWeapon.vrNetworkPlayerScript)
         {
-            vrWeapon.vrNetworkPlayerScript.rightHandObject = null;
-            vrWeapon.vrNetworkPlayerScript.leftHandObject = null;
+            if (_hand == 2)
+            {
+                vrWeapon.vrNetworkPlayerScript.leftHandObject = null;
+            }
+            else
+            {
+                vrWeapon.vrNetworkPlayerScript.rightHandObject = null;
+            }
             // vrWeapon.vrNetworkPlayerScript = null;
         }
     }

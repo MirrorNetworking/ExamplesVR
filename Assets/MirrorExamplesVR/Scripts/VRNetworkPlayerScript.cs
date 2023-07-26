@@ -79,6 +79,7 @@ public class VRNetworkPlayerScript : NetworkBehaviour
             //Debug.Log("Mirror OnRightObjectChangedHook: " + rightHandObject);
             vrWeaponRight = rightHandObject.GetComponent<VRWeapon>();
             vrWeaponRight.vrNetworkPlayerScript = this;
+            vrWeaponRight.SetTextAmmo();
         }
         else
         {
@@ -98,6 +99,7 @@ public class VRNetworkPlayerScript : NetworkBehaviour
             //Debug.Log("Mirror OnLeftObjectChangedHook: " + leftHandObject);
             vrWeaponLeft = leftHandObject.GetComponent<VRWeapon>();
             vrWeaponLeft.vrNetworkPlayerScript = this;
+            vrWeaponLeft.SetTextAmmo();
         }
         else
         {
@@ -115,8 +117,31 @@ public class VRNetworkPlayerScript : NetworkBehaviour
     //    }
     //}
 
+    public void Fire(int _hand)
+    {
+        if ((_hand == 0 || _hand == 1) && rightHandObject && vrWeaponRight)
+        {
+            if (Time.time > vrWeaponRight.weaponFireCooldownTime && vrWeaponRight.weaponAmmo > 0)
+            {
+                vrWeaponRight.weaponFireCooldownTime = Time.time + vrWeaponRight.weaponFireCooldown;
+                CmdFire(_hand);
+                vrPlayerRig.audioCue.Play();
+            }
+        }
+        if ((_hand == 0 || _hand == 2) && leftHandObject && vrWeaponLeft)
+        {
+            if (Time.time > vrWeaponLeft.weaponFireCooldownTime && vrWeaponLeft.weaponAmmo > 0)
+            {
+                vrWeaponLeft.weaponFireCooldownTime = Time.time + vrWeaponLeft.weaponFireCooldown;
+                CmdFire(_hand);
+                vrPlayerRig.audioCue.Play();
+            }
+        }
+    }
+    
+
     [Command]
-    public void CmdFire(int _hand)
+    private void CmdFire(int _hand)
     {
         // 0 both, 1 right, 2 left
         //Debug.Log("Mirror CmdFire");
@@ -128,29 +153,31 @@ public class VRNetworkPlayerScript : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void RpcOnFire(int _hand)
+    private void RpcOnFire(int _hand)
     {
         //Debug.Log("Mirror RpcOnFire");
         OnFire(_hand);
     }
 
-    public void OnFire(int _hand)
+    private void OnFire(int _hand)
     {
         //Debug.Log("Mirror OnFire");
         GameObject projectile = null;
         if ((_hand == 0 || _hand == 1) && rightHandObject && vrWeaponRight)
         {
-            projectile = Instantiate(vrWeaponRight.projectilePrefab, vrWeaponRight.fireLine.position, vrWeaponRight.fireLine.rotation);
-            projectile.GetComponent<Rigidbody>().AddForce(vrWeaponRight.fireLine.forward * 35);
+            vrWeaponRight.weaponAmmo -= 1;
+            vrWeaponRight.SetTextAmmo();
+            projectile = Instantiate(vrWeaponRight.weaponProjectile, vrWeaponRight.weaponFireLine.position, vrWeaponRight.weaponFireLine.rotation);
+            projectile.GetComponent<Rigidbody>().AddForce(vrWeaponRight.weaponFireLine.forward * vrWeaponRight.weaponProjectileSpeed);
+            Destroy(projectile, vrWeaponRight.weaponProjectileLife);
         }
         if ((_hand == 0 || _hand == 2) && leftHandObject && vrWeaponLeft)
         {
-            projectile = Instantiate(vrWeaponLeft.projectilePrefab, vrWeaponLeft.fireLine.position, vrWeaponLeft.fireLine.rotation);
-            projectile.GetComponent<Rigidbody>().AddForce(vrWeaponLeft.fireLine.forward * 35);
-        }
-        if (projectile)
-        {
-            Destroy(projectile, 10.0f);
+            vrWeaponLeft.weaponAmmo -= 1;
+            vrWeaponLeft.SetTextAmmo();
+            projectile = Instantiate(vrWeaponLeft.weaponProjectile, vrWeaponLeft.weaponFireLine.position, vrWeaponLeft.weaponFireLine.rotation);
+            projectile.GetComponent<Rigidbody>().AddForce(vrWeaponLeft.weaponFireLine.forward * vrWeaponLeft.weaponProjectileSpeed);
+            Destroy(projectile, vrWeaponLeft.weaponProjectileLife);
         }
     }
 }

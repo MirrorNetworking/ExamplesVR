@@ -61,8 +61,8 @@ public class VRPlayerRig : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                audioCue.Play();
-                localVRNetworkPlayerScript.CmdFire(0);
+               // audioCue.Play();
+                localVRNetworkPlayerScript.Fire(0);
             }
         }
 
@@ -73,7 +73,7 @@ public class VRPlayerRig : MonoBehaviour
         //{
         //    Debug.Log("Hello - " + button);
         //    audioCue.Play();
-        //    localVRNetworkPlayerScript.CmdFire();
+        //    localVRNetworkPlayerScript.Fire();
         //}
 
         if (localVRNetworkPlayerScript && localVRNetworkPlayerScript.isLocalPlayer)
@@ -82,14 +82,14 @@ public class VRPlayerRig : MonoBehaviour
             if (rightHand.GetComponent<ActionBasedController>().activateAction.action.ReadValue<float>() > 0.5f)
             {
                 //Debug.Log("Mirror R trigger pressed");
-                audioCue.Play();
-                localVRNetworkPlayerScript.CmdFire(1);
+                //audioCue.Play();
+                localVRNetworkPlayerScript.Fire(1);
             }
             if (leftHand.GetComponent<ActionBasedController>().activateAction.action.ReadValue<float>() > 0.5f)
             {
                 //Debug.Log("Mirror L trigger pressed");
-                audioCue.Play();
-                localVRNetworkPlayerScript.CmdFire(2);
+                //audioCue.Play();
+                localVRNetworkPlayerScript.Fire(2);
             }
         }
     }
@@ -117,8 +117,8 @@ public class VRPlayerRig : MonoBehaviour
     private void InputActionShootButton(InputAction.CallbackContext context)
     {
         //Debug.Log("Mirror InputActionCombatActivated: " + context);
-        audioCue.Play();
-        localVRNetworkPlayerScript.CmdFire(0);
+        //audioCue.Play();
+        localVRNetworkPlayerScript.Fire(0);
     }
 
     public InputActionReference testReference = null;
@@ -139,8 +139,8 @@ public class VRPlayerRig : MonoBehaviour
 
     private void DoChangeThing(InputAction.CallbackContext context)
     {
-        audioCue.Play();
-        localVRNetworkPlayerScript.CmdFire(0);
+        //audioCue.Play();
+        localVRNetworkPlayerScript.Fire(0);
     }
 
     public void SetHandStatus(int _status)
