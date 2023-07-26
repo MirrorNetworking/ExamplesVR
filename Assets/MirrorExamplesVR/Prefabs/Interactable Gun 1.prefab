@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2418966709872520369}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 0.685, y: -0.104, z: 0}
+  m_LocalPosition: {x: 0.73, y: -0.104, z: -0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -881,6 +881,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   vrWeapon: {fileID: 2418966711741288440}
+  vrNetworkPlayerScript: {fileID: 0}
 --- !u!65 &2418966711741288433
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -892,8 +893,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.91450167, y: 0.297219, z: 0.30376974}
-  m_Center: {x: 0.07921293, y: -0.1285616, z: -0.0011598162}
+  m_Size: {x: 0.85867554, y: 0.297219, z: 0.30376974}
+  m_Center: {x: 0.021525223, y: -0.1285616, z: -0.0011598162}
 --- !u!114 &2418966711741288440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,8 +924,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.24249507, y: 0.3523575, z: 0.19693841}
-  m_Center: {x: -0.30159116, y: 0.19537875, z: 0.0005632933}
+  m_Size: {x: 0.46208024, y: 0.3523575, z: 0.19693841}
+  m_Center: {x: -0.19179855, y: 0.19537875, z: 0.0005632933}
 --- !u!1 &2418966711773450241
 GameObject:
   m_ObjectHideFlags: 0

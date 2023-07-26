@@ -1045,7 +1045,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Movemeent Controls: WASD'
+  m_Text: 'Movement Controls: WASD'
 --- !u!1 &3859057162874543458
 GameObject:
   m_ObjectHideFlags: 0

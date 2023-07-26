@@ -66,7 +66,15 @@ public class VRNetworkInteractable : NetworkBehaviour
         if (vrWeapon)
         {
             vrWeapon.vrNetworkPlayerScript = sender.identity.GetComponent<VRNetworkPlayerScript>();
-            vrWeapon.vrNetworkPlayerScript.rightHandObject = this.netIdentity;
+            if (VRStaticVariables.handValue == 2)
+            {
+                vrWeapon.vrNetworkPlayerScript.leftHandObject = this.netIdentity;
+            }
+            else
+            {
+                vrWeapon.vrNetworkPlayerScript.rightHandObject = this.netIdentity;
+            }
+            
         }
     }
 
@@ -91,7 +99,8 @@ public class VRNetworkInteractable : NetworkBehaviour
         if (vrWeapon && vrWeapon.vrNetworkPlayerScript)
         {
             vrWeapon.vrNetworkPlayerScript.rightHandObject = null;
-           // vrWeapon.vrNetworkPlayerScript = null;
+            vrWeapon.vrNetworkPlayerScript.leftHandObject = null;
+            // vrWeapon.vrNetworkPlayerScript = null;
         }
     }
     //*/

@@ -2018,6 +2018,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   vrWeapon: {fileID: 0}
+  vrNetworkPlayerScript: {fileID: 0}
 --- !u!23 &882675118
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3355,6 +3356,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   vrWeapon: {fileID: 0}
+  vrNetworkPlayerScript: {fileID: 0}
 --- !u!23 &1375861850
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3999,7 +4001,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1280621457}
+        m_TargetAssemblyTypeName: VRPlayerRig, Assembly-CSharp
+        m_MethodName: SetHandStatus
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -4684,6 +4698,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   vrWeapon: {fileID: 0}
+  vrNetworkPlayerScript: {fileID: 0}
 --- !u!23 &1740365336
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5940,7 +5955,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1280621457}
+        m_TargetAssemblyTypeName: VRPlayerRig, Assembly-CSharp
+        m_MethodName: SetHandStatus
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
