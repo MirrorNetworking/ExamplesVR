@@ -201,7 +201,7 @@ public class VRCanvasHUD : MonoBehaviour
 
     private void Update()
     {
-        if (TouchScreenKeyboard.isSupported && keyboard.active && keyboard.text != "")
+        if (TouchScreenKeyboard.isSupported && keyboard != null && keyboard.active && keyboard.text != "")
         {
             if (keyboardStatus == 1)
             {
